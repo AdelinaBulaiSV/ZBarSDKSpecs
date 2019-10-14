@@ -88,37 +88,9 @@ s.license = "GNU LGPL 2.1"
   #  Not including the public_header_files will make all headers public.
   #
 
-# s.source_files = "zbar/**/*"
+    s.public_header_files = ["iphone/**/**/*.h", "include/*.h"]
 
-#  s.source_files  = "Classes", "Classes/**/*.{h,m}"
-  #  s.exclude_files = "Classes/Exclude"
-
-# s.source_files = "ZBarSDK/**/*.{h,m,c}"
-# s.source_files = "ZBarSDK/iphone/include/**/*.{h}"
-
-# s.source_files = 'Classes/*.{h,m,swift}'
-
-# s.source_files  = 'Classes/**/*.{h,m}'
-
-# s.source_files = 'ZBarSDK/*'
-
-  # s.public_header_files = "Classes/**/*.h"
-
-s.public_header_files = ["iphone/**/**/*.h", "include/*.h"]
-
-s.source_files = "include/zbar.h", "zbar/**/*.h", "iphone/*.h", "iphone/include/**/*.h", "zbar/{config,decoder,error,image,img_scanner,refcnt,scanner,symbol}.c", "zbar/decoder/{codabar,code39,code93,code128,databar,ean,i25,qr_finder}.c", "zbar/qrcode/*.c", "iphone/*.m"
-
-s.resources = "iphone/res/{zbar-*.png,zbar-help.html}"
-s.frameworks = "AVFoundation", "CoreGraphics", "CoreMedia", "CoreVideo", "QuartzCore"
-s.library   = "iconv"
-
-s.xcconfig = { "EXCLUDED_SOURCE_FILE_NAMES[sdk=iphoneos*][arch=*]": "ZBarReaderViewImpl_Simulator.m",
-"EXCLUDED_SOURCE_FILE_NAMES[sdk=iphonesimulator*][arch=*]": "ZBarReaderViewImpl_Capture.m ZBarCaptureReader.m",
-"GCC_PREPROCESSOR_DEFINITIONS": "NDEBUG=1" }
-
-s.prefix_header_file = "iphone/include/prefix.pch"
-s.compiler_flags = "-w"
-s.requires_arc = false
+    s.source_files = "include/zbar.h", "zbar/**/*.h", "iphone/*.h", "iphone/include/**/*.h", "zbar/{config,decoder,error,image,img_scanner,refcnt,scanner,symbol}.c", "zbar/decoder/{codabar,code39,code93,code128,databar,ean,i25,qr_finder}.c", "zbar/qrcode/*.c", "iphone/*.m"
 
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -129,8 +101,7 @@ s.requires_arc = false
   #  non-essential files like tests, examples and documentation.
   #
 
-  # s.resource  = "icon.png"
-  # s.resources = "Resources/*.png"
+    s.resources = "iphone/res/{zbar-*.png,zbar-help.html}"
 
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
 
@@ -140,11 +111,9 @@ s.requires_arc = false
   #  the lib prefix of their name.
   #
 
-  # s.framework  = "SomeFramework"
-  # s.frameworks = "SomeFramework", "AnotherFramework"
+  s.frameworks = "AVFoundation", "CoreGraphics", "CoreMedia", "CoreVideo", "QuartzCore"
 
-  # s.library   = "iconv"
-  # s.libraries = "iconv", "xml2"
+  s.library   = "iconv"
 
 
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -153,9 +122,13 @@ s.requires_arc = false
   #  where they will only apply to your library. If you depend on other Podspecs
   #  you can include multiple dependencies to ensure it works.
 
-  # s.requires_arc = true
+    s.requires_arc = false
 
-  # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
+    s.xcconfig = { "EXCLUDED_SOURCE_FILE_NAMES[sdk=iphoneos*][arch=*]": "ZBarReaderViewImpl_Simulator.m", "EXCLUDED_SOURCE_FILE_NAMES[sdk=iphonesimulator*][arch=*]": "ZBarReaderViewImpl_Capture.m ZBarCaptureReader.m", "GCC_PREPROCESSOR_DEFINITIONS": "NDEBUG=1" }
+
+    s.prefix_header_file = "iphone/include/prefix.pch"
+    s.compiler_flags = "-w"
+
   # s.dependency "JSONKit", "~> 1.4"
 
 end
